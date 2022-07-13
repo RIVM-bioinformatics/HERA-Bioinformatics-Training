@@ -4,7 +4,7 @@
 rm -rf /content/sample_data
 mkdir example_data
 mkdir source/
-bash -c "$(wget https://github.com/RIVM-bioinformatics/HERA-Bioinformatics-Training/tarball/main -O - | tar -xz -C source_material/ --strip-components=1)" > /dev/null 2>&1
+bash -c "$(wget -q https://github.com/RIVM-bioinformatics/HERA-Bioinformatics-Training/tarball/main -O - | tar -xz -C source_material/ --strip-components=1)"
 
 ## install miniconda and get some basic tools
 wget -q https://repo.anaconda.com/miniconda/Miniconda3-py37_4.11.0-Linux-x86_64.sh
@@ -28,7 +28,7 @@ conda install -q mamba==0.24.0 python=3.8 -y > /dev/null 2>&1
 # make a dedicated environment for every course section
 mamba create -n Data_cleanup ampligone fastp -y > /dev/null 2>&1
 mamba create -n Alignments minimap2 bwa-mem2 bowtie2 samtools -y >/dev/null 2>&1
-mamba create -n Consensus_seq longshot medaka bcftools pip -y >/dev/null 2>&1; conda activate Consensus_seq; pip install git+https://github.com/RIVM-bioinformatics/TrueConsense.git@rewrite > /dev/null 2>&1; conda deactivate > /dev/null 2>&1
+mamba create -n Consensus_seq longshot medaka bcftools pip -y >/dev/null 2>&1; source activate Consensus_seq; pip install git+https://github.com/RIVM-bioinformatics/TrueConsense.git@rewrite > /dev/null 2>&1; conda deactivate > /dev/null 2>&1
 
 
 # sample fastq file from ENA
