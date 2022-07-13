@@ -4,7 +4,7 @@
 rm -rf /content/sample_data
 mkdir example_data
 mkdir source/
-bash -c "$(wget -q https://github.com/RIVM-bioinformatics/HERA-Bioinformatics-Training/tarball/main -O - | tar -xz -C source_material/ --strip-components=1)"
+bash -c "$(wget -q https://github.com/RIVM-bioinformatics/HERA-Bioinformatics-Training/tarball/main -O - | tar -xz -C source/ --strip-components=1)"
 
 ## install miniconda and get some basic tools
 wget -q https://repo.anaconda.com/miniconda/Miniconda3-py37_4.11.0-Linux-x86_64.sh
