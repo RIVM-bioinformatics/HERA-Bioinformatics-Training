@@ -37,4 +37,4 @@ mamba create -n Consensus_seq longshot medaka bcftools pip -y >/dev/null 2>&1; s
 # wget -q https://raw.githubusercontent.com/RIVM-bioinformatics/SARS2seq/main/SARS2seq/workflow/files/MN908947.fasta -O example_data/sars-cov-2_reference.fasta &
 
 
-pip install igv-jupyter --quiet
+pip install igv-jupyter --quiet > /dev/null 2>&1
