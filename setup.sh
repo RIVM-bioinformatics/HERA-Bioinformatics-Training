@@ -6,6 +6,9 @@ mkdir example_data
 mkdir source/
 bash -c "$(wget -q https://github.com/RIVM-bioinformatics/HERA-Bioinformatics-Training/tarball/main -O - | tar -xz -C source/ --strip-components=1)"
 
+# get sample fastq file from ENA
+wget -q https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR408/005/ERR4082025/ERR4082025_1.fastq.gz -O example_data/nanopore_fastq.fastq.gz & 
+
 ## install miniconda and get some basic tools
 wget -q https://repo.anaconda.com/miniconda/Miniconda3-py37_4.11.0-Linux-x86_64.sh
 chmod +x Miniconda3-py37_4.11.0-Linux-x86_64.sh
@@ -29,12 +32,11 @@ mamba create -n Data_cleanup ampligone fastp -y > /dev/null 2>&1
 mamba create -n Alignments minimap2 bwa-mem2 bowtie2 samtools -y >/dev/null 2>&1
 mamba create -n Consensus_seq longshot medaka bcftools pip -y >/dev/null 2>&1; source activate Consensus_seq; pip install git+https://github.com/RIVM-bioinformatics/TrueConsense.git@rewrite > /dev/null 2>&1; conda deactivate > /dev/null 2>&1
 
-
-# sample fastq file from ENA
-# wget -q ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR118/078/SRR11844878/SRR11844878_1.fastq.gz -O example_data/sars-cov-2_hong_kong_example.fastq.gz & 
-
-## fetch the reference genome from NCBI
-# wget -q https://raw.githubusercontent.com/RIVM-bioinformatics/SARS2seq/main/SARS2seq/workflow/files/MN908947.fasta -O example_data/sars-cov-2_reference.fasta &
-
+## fetch the reference genome from AWS
+wget -q https://s3.amazonaws.com/igv.org.genomes/ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.fna -O example_data/sars-cov-2_reference.fasta
+wget -q https://s3.amazonaws.com/igv.org.genomes/ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.fna.fai -O example_data/sars-cov-2_reference.fasta.fai
 
 pip install igv-jupyter --quiet > /dev/null 2>&1
+
+
+echo -e "\e[1m\e[32mDone with installing everything, you can now continue with the rest of the course.\e[39m"
