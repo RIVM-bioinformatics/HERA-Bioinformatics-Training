@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## Remove standard directories placed as a default by Colab
+# Remove standard directories placed as a default by Colab
 rm -rf /content/sample_data
 mkdir example_data
 mkdir source/
@@ -12,18 +12,17 @@ chmod +x Miniconda3-py37_4.11.0-Linux-x86_64.sh
 ./Miniconda3-py37_4.11.0-Linux-x86_64.sh -b -f -p /usr/local > /dev/null 2>&1
 rm Miniconda3-py37_4.11.0-Linux-x86_64.sh
 
-echo "Conda is installed."
-echo "Installing and preparing source material, this may take a while..."
-
 # setup the necessary channels
+conda config --add channels anaconda
+conda config --add channels intel
 conda config --add channels conda-forge
 conda config --add channels bioconda
-conda config --add channels intel
-conda config --add channels anaconda
-
 
 # install mamba as a base package on the VM
-conda install -q mamba==0.24.0 python=3.8 -y > /dev/null 2>&1
+conda install -q mamba==0.24.0 python=3.8 pip -y > /dev/null 2>&1
+
+echo "Conda is installed as well as some fundamentals"
+echo "Installing and preparing source material, this may take a while..."
 
 # make a dedicated environment for every course section
 mamba create -n Data_cleanup ampligone fastp -y > /dev/null 2>&1
@@ -36,3 +35,6 @@ mamba create -n Consensus_seq longshot medaka bcftools pip -y >/dev/null 2>&1; s
 
 ## fetch the reference genome from NCBI
 # wget -q https://raw.githubusercontent.com/RIVM-bioinformatics/SARS2seq/main/SARS2seq/workflow/files/MN908947.fasta -O example_data/sars-cov-2_reference.fasta &
+
+
+pip install igv-jupyter --quiet
