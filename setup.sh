@@ -7,9 +7,9 @@ mkdir source/
 bash -c "$(wget -q https://github.com/RIVM-bioinformatics/HERA-Bioinformatics-Training/tarball/main -O - | tar -xz -C source/ --strip-components=1)"
 
 # get sample fastq file from ENA
-wget -q https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR408/005/ERR4082025/ERR4082025_1.fastq.gz -O example_data/nanopore_fastq.fastq.gz & 
-wget -q https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR408/008/ERR4082808/ERR4082808_1.fastq.gz -O example_data/illumina_fastq_1.fastq.gz &
-wget -q https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR408/008/ERR4082808/ERR4082808_2.fastq.gz -O example_data/illumina_fastq_2.fastq.gz &
+wget -q ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR408/005/ERR4082025/ERR4082025_1.fastq.gz -O example_data/nanopore_fastq.fastq.gz & 
+wget -q ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR408/008/ERR4082808/ERR4082808_1.fastq.gz -O example_data/illumina_fastq_1.fastq.gz &
+wget -q ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR408/008/ERR4082808/ERR4082808_2.fastq.gz -O example_data/illumina_fastq_2.fastq.gz &
 
 ## install miniconda and get some basic tools
 wget -q https://repo.anaconda.com/miniconda/Miniconda3-py37_4.11.0-Linux-x86_64.sh
