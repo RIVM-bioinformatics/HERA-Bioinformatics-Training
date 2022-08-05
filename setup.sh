@@ -4,6 +4,7 @@
 rm -rf /content/sample_data
 mkdir example_data
 mkdir source/
+mkdir output_data/
 bash -c "$(wget -q https://github.com/RIVM-bioinformatics/HERA-Bioinformatics-Training/tarball/main -O - | tar -xz -C source/ --strip-components=1)"
 
 # get sample fastq file from ENA
@@ -31,7 +32,7 @@ echo "Installing and preparing source material, this may take a while..."
 
 # make a dedicated environment for every course section
 mamba create -n Data_cleanup ampligone fastp -y > /dev/null 2>&1
-mamba create -n Alignments minimap2 bwa-mem2 bowtie2 samtools -y >/dev/null 2>&1
+mamba create -n Alignments minimap2 samtools -y >/dev/null 2>&1
 mamba create -n Consensus_seq longshot medaka bcftools pip -y >/dev/null 2>&1; source activate Consensus_seq; pip install git+https://github.com/RIVM-bioinformatics/TrueConsense.git@rewrite > /dev/null 2>&1; conda deactivate > /dev/null 2>&1
 
 pip install igv-jupyter --quiet > /dev/null 2>&1
