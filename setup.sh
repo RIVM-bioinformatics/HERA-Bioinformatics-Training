@@ -32,7 +32,7 @@ echo "Installing and preparing source material, this may take a while..."
 
 # make a dedicated environment for every course section
 mamba create -n Data_cleanup ampligone fastp -y > /dev/null 2>&1
-mamba create -n Alignments minimap2 samtools bedtools -y >/dev/null 2>&1
+mamba create -n Alignments minimap2 samtools bedtools pysam -y >/dev/null 2>&1
 mamba create -n Consensus_seq longshot medaka bcftools pip -y >/dev/null 2>&1; source activate Consensus_seq; pip install git+https://github.com/RIVM-bioinformatics/TrueConsense.git@rewrite > /dev/null 2>&1; conda deactivate > /dev/null 2>&1
 
 pip install igv-jupyter --quiet > /dev/null 2>&1
