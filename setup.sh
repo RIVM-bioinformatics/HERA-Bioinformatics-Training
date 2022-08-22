@@ -8,7 +8,7 @@ mkdir -p output_data/alignments output_data/adapter_removal output_data/quality_
 bash -c "$(wget -q https://github.com/RIVM-bioinformatics/HERA-Bioinformatics-Training/tarball/main -O - | tar -xz -C source/ --strip-components=1)"
 
 # get sample fastq file from ENA
-wget -q ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR408/005/ERR4082025/ERR4082025_1.fastq.gz -O example_data/nanopore_fastq.fastq.gz & 
+wget -q ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR990/007/ERR9900947/ERR9900947.fastq.gz -O example_data/nanopore_fastq.fastq.gz & 
 wget -q ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR408/008/ERR4082808/ERR4082808_1.fastq.gz -O example_data/illumina_fastq_1.fastq.gz &
 wget -q ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR408/008/ERR4082808/ERR4082808_2.fastq.gz -O example_data/illumina_fastq_2.fastq.gz &
 
